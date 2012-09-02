@@ -1,0 +1,6 @@
+{"url":"http://montreal.kijiji.ca/f-real-estate-apartments-condos-W0QQCatIdZ37",
+ "page_limit":"5",
+ "fields":[
+    {"name":"posting_url", "type":"multiple", "directives" : [{"tag":"a", "attrs":{"class":"adLinkSB"}}, {"value":"href"}]},
+    {"name":"next_page_url", "type":"multiple", "directives" : [{"tag":"a", "attrs":{"class":"prevNextLink"}}, {"value":"href"}, {"result":"1"}]}
+]}

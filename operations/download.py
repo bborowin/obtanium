@@ -30,17 +30,16 @@ class Listing(object):
             if 'http' not in next_page_url.value:
                 next_page_url.value = self.config['url'] + next_page_url.value
             # get all new posting urls
+            new_urls = 0
             for posting_url in result['posting_url']:
-                if Url.query.filter(Url.value == posting_url).count() > 0:
-                    # signal break if a known url found
-                    next_page_url = None
-                else:
+                if not Url.query.filter(Url.value == posting_url).count() > 0:
+                    new_urls += 1
                     url = Url(value=posting_url, status='listed')
                     posting_urls.append(url)
             session.commit()
             page_count += 1
-            # break if page limit reached
-            if page_count > page_limit:
+            # break if page limit reached, or page full of known urls
+            if 0 == new_urls or page_count > page_limit:
                 break
 
 
@@ -55,4 +54,4 @@ class Retriever(object):
             p.download()
             session.commit()
             del(p)
-
+        session.commit()

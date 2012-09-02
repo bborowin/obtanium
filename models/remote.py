@@ -11,7 +11,7 @@ from elixir.entity import Entity
 class Url(Entity):
     value = Field(String(2000))
     status = Field(String(200)) # [listed, downloaded, processed, expired]
-
+    postings = OneToMany('Posting')
 
 # represents individual posting
 class Posting(Entity):
