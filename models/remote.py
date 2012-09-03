@@ -5,7 +5,7 @@
 import requests, json
 from elixir import *
 from elixir.entity import Entity
-
+from bs4 import UnicodeDammit
 
 # used to store urls
 class Url(Entity):
@@ -21,13 +21,15 @@ class Posting(Entity):
     def __init__(self, url=None):
         self.url = url
         
-    # download the body of this posting
+    # download the body of this posting & handle different encodings
     def download(self, url=None, mark=True):
         if None != url:
             self.url = url
-        r = requests.get(self.url.value)
+        cookie = dict(area_preference = "Vlanguage=en") # todo: provide cookies in config -- this one is for kijiji only
+        r = requests.get(self.url.value, cookies = cookie)
         if mark and 200 == r.status_code:
             self.url.status = 'downloaded'
-        self.content = r.content
-        print '{0}: {1}'.format(self.url.value, r.status_code)
+        clean = UnicodeDammit(r.content)
+        self.content = clean.unicode_markup.encode('utf-8')
+        print '{0}: {1} [{2}]'.format(self.url.value, r.status_code, clean.original_encoding)
 

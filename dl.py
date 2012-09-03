@@ -16,10 +16,7 @@ setup_all()
 configs = ['config/craigslist-apartment-rental-listing.json', 'config/kijiji-apartment-rental-listing.json']
 while(True):
     for c in configs:
-        try:
-            l = Listing(c)
-            r = Retriever()
-            r.scrape(l)
-        except Exception as e:
-            print "OOPS:", e.msg
+        l = Listing(c)
+        r = Retriever()
+        r.scrape(l)
     sleep(360 + randint(-30,30))
