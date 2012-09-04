@@ -1,21 +1,29 @@
 # models representing local data objects
 from elixir import *
-import json
+import json, requests
 from operations.extract import Extractor
 from models.remote import Url, Posting
 from datetime import datetime
 
+
 class Location(Entity):
     address = Field(String(2000))
-    precision = Field(Integer())
+    json = Field(Text(10000))
+    
+    accuracy = Field(String(50))
     latitude = Field(Float())
     longitude = Field(Float())
 
-    # use geocoding service to obtain lat/lon from address
-    def geocode(address = None):
-        if None != address:
-            self.address = address
-        pass
+def processLocation(address):
+    # check if already exists
+    existing_location = Location.query.filter(Location.address == address).first()
+    if not existing_location:
+        existing_location = Location()
+        existing_location.address = address
+        print '> ', address, 'unknown'
+    else:
+        print '> already had', address
+    return existing_location
 
 
 # base class for processed postings
@@ -48,11 +56,13 @@ class CraigslistApartment(RentalApartment):
         self.url = posting.url
         # get attributes directly extractable from html
         attributes = self.process(posting)
-        self.price = attributes['price']
+        try:
+            self.price = int(attributes['price'])
+        except:
+            self.price = -1
         self.posted = attributes['posted']
         self.bedrooms = attributes['bedrooms']
-        self.location = Location()
-        self.location.address = self.getAddress(attributes)
+        self.location = processLocation(self.getAddress(attributes))
         posting.url.status = 'processed'
         session.commit()
         
@@ -69,14 +79,16 @@ class KijijiApartment(RentalApartment):
         self.url = posting.url
         # get attributes directly extractable from html
         attributes = self.process(posting)
-        self.price = attributes['price']
+        try:
+            self.price = int(attributes['price'])
+        except:
+            self.price = -1
         try:
             posted = datetime.strptime(attributes['posted'], '%d-%b-%y')
         except:
             posted = datetime.now()
         self.posted = posted
-        self.location = Location()
-        self.location.address = attributes['address']
+        self.location = processLocation(attributes['address'])
         posting.url.status = 'processed'
         session.commit()
 

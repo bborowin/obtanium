@@ -15,8 +15,10 @@ setup_all()
 
 configs = ['config/craigslist-apartment-rental-listing.json', 'config/kijiji-apartment-rental-listing.json']
 while(True):
+    session.commit()
     for c in configs:
         l = Listing(c)
         r = Retriever()
         r.scrape(l)
-    sleep(360 + randint(-30,30))
+    print '> download list exhausted - sleeping'
+    sleep(180 + randint(-20,20))

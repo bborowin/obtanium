@@ -2,6 +2,7 @@
 
 # extract structured information from newly downloaded postings
 import sys
+from time import sleep
 from elixir import *
 from operations.download import *
 from models.remote import Url, Posting
@@ -20,15 +21,21 @@ for c in config_paths:
     fh.close()
     configs.append(config)
 
-
-postings = Posting.query.filter(Posting.url.has(status='downloaded')).all()
-print len(postings), 'ready for processing'
-for p in postings:
-    for c in configs:
-        if c['url_match'] in p.url.value:
-            print p.url.value
-            local_class = getattr(sys.modules[__name__], c['class'])
-            e = local_class(c)
-            e.populate(p)
-            break
+postings = None
+while True:
     session.commit()
+    postings = Posting.query.populate_existing().filter(Posting.url.has(status='downloaded')).all()
+    if len(postings) > 0:
+        print len(postings), 'ready for processing'
+        for p in postings:
+            for c in configs:
+                if c['url_match'] in p.url.value:
+                    print p.url.value
+                    local_class = getattr(sys.modules[__name__], c['class'])
+                    e = local_class(c)
+                    e.populate(p)
+                    break
+            session.commit()
+            session.expire(p)
+    print '> extract list exhausted - sleeping'
+    sleep(5)
