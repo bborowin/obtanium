@@ -37,5 +37,5 @@ while True:
                     break
             session.commit()
             session.expire(p)
-    print '> extract list exhausted - sleeping'
+        print '> extract list exhausted - sleeping'
     sleep(5)

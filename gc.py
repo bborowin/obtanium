@@ -13,5 +13,4 @@ gc = Geocoder()
 while(True):
     session.commit()
     gc.updateLocations()
-    print '> geocoder list exhausted - sleeping'
     sleep(5)

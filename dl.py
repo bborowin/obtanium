@@ -19,6 +19,9 @@ while(True):
     for c in configs:
         l = Listing(c)
         r = Retriever()
-        r.scrape(l)
+        try:
+            r.scrape(l)
+        except:
+            sleep(60)
     print '> download list exhausted - sleeping'
     sleep(180 + randint(-20,20))
