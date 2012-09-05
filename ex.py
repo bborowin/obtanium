@@ -24,7 +24,7 @@ for c in config_paths:
 postings = None
 while True:
     session.commit()
-    postings = Posting.query.join(Posting.url).filter(Url.status!='downloaded').all()
+    postings = Posting.query.join(Posting.url).filter(Url.status=='downloaded').all()
     if len(postings) > 0:
         print len(postings), 'ready for processing'
         for p in postings:
