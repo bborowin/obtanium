@@ -44,7 +44,7 @@ class RentalApartment(Entry):
     posted = Field(DateTime())
     location = ManyToOne('Location')
     price = Field(Integer())
-    bedrooms = Field(Integer())
+    rooms = Field(Integer()) # uses QC notation sans .5
     floor = Field(Integer())
     appliances = Field(String(2000))
     backyard = Field(String(2000))
@@ -60,8 +60,14 @@ class CraigslistApartment(RentalApartment):
             self.price = int(attributes['price'])
         except:
             self.price = -1
-        self.posted = attributes['posted']
-        self.bedrooms = attributes['bedrooms']
+        try:
+            self.posted = datetime.strptime(attributes['posted'], '%Y-%m-%d %I:%M%p')
+        except:
+            self.posted = datetime.now()
+        try:
+            self.rooms = 2 + int(attributes['rooms'])
+        except:
+            self.rooms = -1
         self.location = processLocation(self.getAddress(attributes))
         posting.url.status = 'processed'
         session.commit()
@@ -89,6 +95,21 @@ class KijijiApartment(RentalApartment):
             posted = datetime.now()
         self.posted = posted
         self.location = processLocation(attributes['address'])
+        self.getRooms()
         posting.url.status = 'processed'
         session.commit()
 
+    # extract apartment size from url
+    def getRooms(self):
+        if '-bachelor-studio-' in self.url.value:
+            self.rooms = 1
+        elif '-1-bedroom-den-' in self.url.value:
+            self.rooms = 3
+        elif '-1-bedroom-' in self.url.value:
+            self.rooms = 2
+        else:
+            self.rooms = 2 + int(self.url.value.split('condos-')[1].split('-')[0])
+        
+# 
+class SearchNotification(Entity):
+    pass

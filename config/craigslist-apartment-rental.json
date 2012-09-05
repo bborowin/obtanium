@@ -1,12 +1,41 @@
 {"url_match":"craigslist", 
  "class":"CraigslistApartment",
  "fields":[
-    {"name":"price", "type":"single", "directives" : [{"tag":"h2"}, {"text":"1:"}, {"split":" 0"}]},
-    {"name":"bedrooms", "type":"single", "directives" : [{"tag":"h2"}, {"text":""}, {"split":"/1"}, {"split":" 0"}, {"remove":"br"}]},
-    {"name":"posted", "type":"single", "directives" : [{"tag":"span", "attrs":{"class":"postingdate"}}, {"text":"6:-4"}, {"remove":", "}]},
-    {"name":"street", "type":"single", "directives" : [{"comment":"CLTAG xstreet0"}, {"split":"=1"}]},
-    {"name":"cross_street", "type":"single", "directives" : [{"comment":"CLTAG xstreet1"}, {"split":"=1"}]},
-    {"name":"city", "type":"single", "directives" : [{"comment":"CLTAG city"}, {"split":"=1"}]},
-    {"name":"region", "type":"single", "directives" : [{"comment":"CLTAG region"}, {"split":"=1"}]},
-    {"name":"body", "type":"single", "directives" : [{"tag":"div", "attrs":{"id":"userbody"}}, {"clean":""}]}
+    {"name":"price", "type":"single", "directives" : [
+        {"tag":"h2"},
+        {"text":"1:"},
+        {"split":" 0"}
+    ]},
+    {"name":"rooms", "type":"single", "directives" : [
+        {"tag":"h2"},
+        {"text":""},
+        {"split":"/1"},
+        {"split":" 0"},
+        {"remove":"br"}
+    ]},
+    {"name":"posted", "type":"single", "directives" : [
+        {"tag":"span", "attrs":{"class":"postingdate"}},
+        {"text":"6:-4"},
+        {"remove":", "}
+    ]},
+    {"name":"street", "type":"single", "directives" : [
+        {"comment":"CLTAG xstreet0"},
+        {"split":"=1"}
+    ]},
+    {"name":"cross_street", "type":"single", "directives" : [
+        {"comment":"CLTAG xstreet1"},
+        {"split":"=1"}
+    ]},
+    {"name":"city", "type":"single", "directives" : [
+        {"comment":"CLTAG city"},
+        {"split":"=1"}
+    ]},
+    {"name":"region", "type":"single", "directives" : [
+        {"comment":"CLTAG region"},
+        {"split":"=1"}
+    ]},
+    {"name":"body", "type":"single", "directives" : [
+        {"tag":"div", "attrs":{"id":"userbody"}},
+        {"clean":""}
+    ]}
  ]}

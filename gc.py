@@ -11,6 +11,9 @@ setup_all()
 
 gc = Geocoder()
 while(True):
-    session.commit()
-    gc.updateLocations()
-    sleep(5)
+    try:
+        session.commit()
+        gc.updateLocations()
+        sleep(5)
+    except Exception as e:
+        print e
