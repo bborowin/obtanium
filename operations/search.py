@@ -24,7 +24,7 @@ class AttributeSearch(object):
         lists = self.find(config)
         matches = [l[0] for l in lists[0]]
         mismatches = [l[0] for l in lists[1]]
-        print len(matches), len(mismatches)
+        #print len(matches), len(mismatches)
         for m in matches:
             if m not in results[1]:
                 if m in results[0]:
@@ -50,7 +50,6 @@ class LocationSearch(AttributeSearch):
             latitude = float(t['center'][0])
             longitude = float(t['center'][1])
             radius = float(t['radius'])
-            #locations = session.query(Location.id).filter(Location.accuracy.in_(self.accuracies)).filter(between(Location.latitude, latitude-radius, latitude+radius)).filter(between(Location.longitude, longitude-radius, longitude+radius)).all()
             locations = session.query(Location.id).filter(between(Location.latitude, latitude-radius, latitude+radius)).filter(between(Location.longitude, longitude-radius, longitude+radius)).all()
             for l in locations:
                 if l[0] not in hits: hits.append(l[0])

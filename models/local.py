@@ -33,6 +33,7 @@ def processLocation(address):
 # base class for processed postings
 class Entry(Entity):
     url = ManyToOne('Url')
+    posted = Field(DateTime())
     config = {}
 
     def __init__(self, config):
@@ -48,7 +49,6 @@ class RentalApartment(Entry):
     def __str__(self):
         return '${0}, {1}.5, {2} {3}'.format(self.price,self.rooms,self.location.address,self.url.value)
 
-    posted = Field(DateTime())
     location = ManyToOne('Location')
     price = Field(Integer())
     rooms = Field(Integer()) # uses QC notation sans .5
@@ -120,6 +120,8 @@ class KijijiApartment(RentalApartment):
             # invalid ad type
             self.rooms = -2
 
-# 
+
 class SearchNotification(Entity):
-    pass
+    apt = ManyToOne('RentalApartment')
+    status = Field(String(250)) # new / sent / ..
+    posted = Field(DateTime())

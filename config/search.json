@@ -1,5 +1,5 @@
 {
-    "price":{"score":5, "min":510, "max":850},
-    "rooms":{"score":5, "min":4, "max":7},
-    "location":{"score":5, "targets":[{"center":[45.5292,-73.6073], "radius":0.01}, {"center":[45.5260,-73.5879], "radius":0.01}]}
+    "price":{"score":5, "min":500, "max":875},
+    "rooms":{"score":5, "min":4, "max":8},
+    "location":{"score":5, "targets":[{"center":[45.5292,-73.6073], "radius":0.015}, {"center":[45.5260,-73.5879], "radius":0.015}]}
 }
