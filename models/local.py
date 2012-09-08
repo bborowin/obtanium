@@ -14,6 +14,10 @@ class Location(Entity):
     latitude = Field(Float())
     longitude = Field(Float())
 
+    def __str__(self):
+        return '{0} ({1}) @ {2},{3}'.format(self.address, self.accuracy, self.latitude, self.longitude)
+
+
 def processLocation(address):
     # check if already exists
     existing_location = Location.query.filter(Location.address == address).first()
@@ -41,6 +45,9 @@ class Entry(Entity):
     
 
 class RentalApartment(Entry):
+    def __str__(self):
+        return '${0}, {1}.5, {2} {3}'.format(self.price,self.rooms,self.location.address,self.url.value)
+
     posted = Field(DateTime())
     location = ManyToOne('Location')
     price = Field(Integer())
@@ -107,9 +114,12 @@ class KijijiApartment(RentalApartment):
             self.rooms = 3
         elif '-1-bedroom-' in self.url.value:
             self.rooms = 2
-        else:
+        elif 'apartments-condos-' in self.url.value:
             self.rooms = 2 + int(self.url.value.split('condos-')[1].split('-')[0])
-        
+        else:
+            # invalid ad type
+            self.rooms = -2
+
 # 
 class SearchNotification(Entity):
     pass

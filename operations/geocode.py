@@ -32,7 +32,7 @@ class Geocoder(object):
         for l in locations:
             self.geocode(l)
             session.commit()
-            sleep(2)
+            sleep(1.5)
 
 def processLocation(address):
     # check if already exists
