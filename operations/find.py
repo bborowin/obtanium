@@ -8,9 +8,6 @@ from elixir import *
 from operations.search import *
 from models.local import RentalApartment as ra, SearchNotification as sn
 
-metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium?charset=utf8"
-setup_all()
-
 
 def search():
     config_paths = ['config/search.json']

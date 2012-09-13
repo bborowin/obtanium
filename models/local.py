@@ -89,22 +89,25 @@ class CraigslistApartment(RentalApartment):
 
 class KijijiApartment(RentalApartment):
     def populate(self, posting):
-        self.url = posting.url
-        # get attributes directly extractable from html
-        attributes = self.process(posting)
         try:
-            self.price = int(attributes['price'])
-        except:
-            self.price = -1
-        try:
-            posted = datetime.strptime(attributes['posted'], '%d-%b-%y')
-        except:
-            posted = datetime.now()
-        self.posted = posted
-        self.location = processLocation(attributes['address'])
-        self.getRooms()
-        posting.url.status = 'processed'
-        session.commit()
+            self.url = posting.url
+            # get attributes directly extractable from html
+            attributes = self.process(posting)
+            try:
+                self.price = int(attributes['price'])
+            except:
+                self.price = -1
+            try:
+                posted = datetime.strptime(attributes['posted'], '%d-%b-%y')
+            except:
+                posted = datetime.now()
+            self.posted = posted
+            self.location = processLocation(attributes['address'])
+            self.getRooms()
+            posting.url.status = 'processed'
+            session.commit()
+        except Exception as e:
+            print e
 
     # extract apartment size from url
     def getRooms(self):
@@ -125,3 +128,6 @@ class SearchNotification(Entity):
     apt = ManyToOne('RentalApartment')
     status = Field(String(250)) # new / sent / ..
     posted = Field(DateTime())
+
+
+

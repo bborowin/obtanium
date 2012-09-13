@@ -24,4 +24,4 @@ while(True):
         except:
             sleep(60)
     print '> download list exhausted - sleeping'
-    sleep(180 + randint(-20,20))
+    sleep(120 + randint(-20,20))
