@@ -28,10 +28,12 @@ class Listing(object):
             next_page_url = Url(value=result['next_page_url'], status='index')
             # make sure the url is absolute
             if 'http' not in next_page_url.value:
-                next_page_url.value = self.config['url'] + next_page_url.value
+                next_page_url.value = self.config['base_url'] + next_page_url.value
             # get all new posting urls
             new_urls = 0
             for posting_url in result['posting_url']:
+                if 'http://' not in posting_url:
+                    posting_url = self.config['base_url'] + posting_url;
                 if not Url.query.filter(Url.value == posting_url).count() > 0:
                     new_urls += 1
                     url = Url(value=posting_url, status='listed')

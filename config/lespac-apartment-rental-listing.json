@@ -1,0 +1,7 @@
+{"url":"http://immo.lespac.com/immobilier-location/achat-vente-location/montreal/r-LPcpZZ0WWgrZZ13WWvilIdZZ3176WWordZZ1WWaffZZ1WWpageZZ0",
+ "base_url":"http://immo.lespac.com",
+ "page_limit":"5",
+ "fields":[
+    {"name":"posting_url", "type":"multiple", "directives" : [{"tag":"div", "attrs":{"class":"inner_ad"}}, {"tag":"h2"}, {"tag":"a", "attrs":{"class":"icn_new_window"}}, {"value":"href"}]},
+    {"name":"next_page_url", "type":"single", "directives" : [{"tag":"div", "attrs":{"class":"nextPage"}}, {"tag":"a"}, {"value":"href"}]}
+]}
