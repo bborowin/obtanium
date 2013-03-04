@@ -31,5 +31,5 @@ class Posting(Entity):
             self.url.status = 'downloaded'
         clean = UnicodeDammit(r.content)
         self.content = clean.unicode_markup.encode('utf-8')
-        print '{0}: {1} [{2}]'.format(self.url.value, r.status_code, clean.original_encoding)
+        print 'DL: {0}: {1} [{2}], {3} bytes'.format(self.url.value, r.status_code, clean.original_encoding, len(r.content))
 

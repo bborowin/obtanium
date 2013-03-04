@@ -13,13 +13,14 @@ class Extractor(object):
         results = {}
         data = BeautifulSoup(raw_html, 'lxml')
         for f in self.fields:
-            #print f['name']
+            #print "f['name']", f['name']
             if 'multiple' == f['type']:
                 # find all matches
                 results[f['name']] = self.find_matches(data, f['directives'], verbose='verbose' in f)
             elif 'single' == f['type']:
                 # find a single match
                 results[f['name']] = self.find_match(data, f['directives'], verbose='verbose' in f)
+            #print results[f['name']]
         return results
 
     # find all pieces of information matching directive chain

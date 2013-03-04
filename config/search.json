@@ -1,5 +1,12 @@
 {
     "price":{"score":5, "min":500, "max":875},
     "rooms":{"score":5, "min":4, "max":8},
-    "location":{"score":5, "targets":[{"center":[45.5292,-73.6073], "radius":0.016}, {"center":[45.5260,-73.5879], "radius":0.016}]}
+    "location":{
+    	"score":5, 
+    	"targets":[{
+    		"center":[45.5292,-73.6073], "radius":0.016
+    	},{
+    		"center":[45.5260,-73.5879], "radius":0.016
+    	}]
+    }
 }

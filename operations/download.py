@@ -20,7 +20,7 @@ class Listing(object):
         page_count = 1
         posting_urls = []
         e = Extractor(self.config['fields'])
-        while None != next_page_url:
+        while None != next_page_url.value:
             listing = Posting(next_page_url)
             listing.download(mark=False)
             result = e.extract(listing.content)
