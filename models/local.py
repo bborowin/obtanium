@@ -124,6 +124,26 @@ class KijijiApartment(RentalApartment):
             self.rooms = -2
 
 
+class LespacApartment(RentalApartment):
+    def populate(self, posting):
+        try:
+            self.url = posting.url
+            # get attributes directly extractable from html
+            attributes = self.process(posting)
+            try:
+                self.price = int(attributes['price'])
+            except:
+                self.price = -1
+            posted = datetime.now()
+            self.posted = posted
+            self.location = processLocation(attributes['address'])
+            self.getRooms()
+            posting.url.status = 'processed'
+            session.commit()
+        except Exception as e:
+            print e
+
+
 class SearchNotification(Entity):
     apt = ManyToOne('RentalApartment')
     status = Field(String(250)) # new / sent / ..
