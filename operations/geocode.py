@@ -40,7 +40,4 @@ def processLocation(address):
     if not existing_location:
         existing_location = Location()
         existing_location.address = address
-        print '> ', address, 'unknown'
-    else:
-        print '> already had', address
     return existing_location

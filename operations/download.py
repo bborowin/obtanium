@@ -32,8 +32,7 @@ class Listing(object):
             # get all new posting urls
             new_urls = 0
             for posting_url in result['posting_url']:
-                if 'http://' not in posting_url:
-                    posting_url = self.config['base_url'] + posting_url;
+                posting_url = self.config['base_url'] + posting_url;
                 if not Url.query.filter(Url.value == posting_url).count() > 0:
                     new_urls += 1
                     url = Url(value=posting_url, status='listed')
@@ -43,6 +42,7 @@ class Listing(object):
             # break if page limit reached, or page full of known urls
             if 0 == new_urls or page_count > page_limit:
                 break
+        print '{0} new urls found'.format(new_urls)
 
 
 # encapsulates logic for downloading & storing postings
@@ -51,6 +51,8 @@ class Retriever(object):
     # given a listing object, retrieve all new postings
     def scrape(self, listing):
         listing.update()
+        listed = Url.query.filter(Url.status == 'listed').count()
+        print '{0} listed postings to be downloaded'.format(listed)
         for url in Url.query.filter(Url.status == 'listed').all():
             p = Posting(url)
             p.download()

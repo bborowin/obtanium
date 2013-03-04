@@ -1,0 +1,23 @@
+{"url_match":"lespac", 
+ "class":"LespacApartment",
+ "fields":[
+    {"name":"price", "type":"single", "directives" : [
+        {"tag":"dd", "attrs":{"class":"price"}},
+        {"text":""}
+    ]},
+    {"name":"price", "type":"single", "directives" : [
+        {"tag":"table", "attrs":{"id":"attributeTable"}},
+        {"tag":"td", "attrs":{"style":"font-weight:bold"}},
+        {"text":""},{"split":".0"},{"remove":"$"},{"remove":","}
+    ]},
+    {"name":"address", "type":"single", "directives" : [
+        {"tag":"table", "attrs":{"id":"attributeTable"}},
+        {"tag":"a", "attrs":{"class":"viewmap-link"}},
+        {"prevsibling":"3"},
+        {"clean":""}
+    ]},
+    {"name":"body", "type":"single", "directives" : [
+        {"tag":"div", "attrs":{"id":"ad-desc"}},
+        {"clean":""}
+    ]}
+ ]}
