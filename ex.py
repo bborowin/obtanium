@@ -13,9 +13,8 @@ metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium?charset=utf8"
 setup_all()
 
 
-config_paths = ['config/craigslist-apartment-rental.json']
-#config_paths = ['config/craigslist-apartment-rental.json', 'config/kijiji-apartment-rental.json']
-#config_paths = ['config/lespac-apartment-rental.json']
+config_paths = ['config/craigslist-apartment-rental.json', 'config/kijiji-apartment-rental.json']
+#, 'config/lespac-apartment-rental.json']
 configs = []
 for c in config_paths:
     fh = open(c)

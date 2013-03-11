@@ -13,8 +13,8 @@ metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium"
 metadata.bind.echo = False
 setup_all()
 
-configs = ['config/craigslist-apartment-rental-listing.json', 'config/kijiji-apartment-rental-listing.json', 'config/kijiji-house-rental-listing.json']
-#configs = ['config/lespac-apartment-rental-listing.json']
+#configs = ['config/craigslist-apartment-rental-listing.json']
+configs = ['config/craigslist-apartment-rental-listing.json', 'config/kijiji-apartment-rental-listing.json', 'config/kijiji-house-rental-listing.json', 'config/lespac-apartment-rental-listing.json']
 while(True):
     session.commit()
     for c in configs:

@@ -1,7 +1,7 @@
 {
 	"url":"http://montreal.en.craigslist.ca/apa/",
-	"base_url":"",
-	"page_limit":"1",
+	"base_url":"http://montreal.en.craigslist.ca/apa/",
+	"page_limit":"3",
 	"fields":[{
 		"name":"posting_url",
 	 	"type":"multiple",
@@ -19,7 +19,7 @@
 		"directives":[{
 			"tag":"p", 
 			"attrs":{
-				"id":"nextpage"
+				"class":"nextpage"
 			}
 		},{
 			"tag":"a"
