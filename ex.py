@@ -4,13 +4,13 @@
 import sys
 from time import sleep
 from elixir import *
+import db
+db.init()
+
 from operations.download import *
 from models.remote import Url, Posting
 from models.local import CraigslistApartment, KijijiApartment, LespacApartment
 
-
-metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium?charset=utf8"
-setup_all()
 
 
 config_paths = ['config/craigslist-apartment-rental.json', 'config/kijiji-apartment-rental.json']

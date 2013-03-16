@@ -1,0 +1,2 @@
+'db':
+    'connection': 'mysql://obtanium:obtanium@localhost/obtanium?charset=utf8'

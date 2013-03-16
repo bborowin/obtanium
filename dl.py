@@ -8,10 +8,8 @@ from operations.download import *
 from random import randint
 from time import sleep
 
-
-metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium"
-metadata.bind.echo = False
-setup_all()
+import db
+db.init()
 
 #configs = ['config/craigslist-apartment-rental-listing.json']
 configs = ['config/craigslist-apartment-rental-listing.json', 'config/kijiji-apartment-rental-listing.json', 'config/kijiji-house-rental-listing.json', 'config/lespac-apartment-rental-listing.json']

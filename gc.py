@@ -6,8 +6,8 @@ from elixir import *
 from operations.geocode import Geocoder
 from time import sleep
 
-metadata.bind = "mysql://obtanium:obtanium@localhost/obtanium?charset=utf8"
-setup_all()
+import db
+db.init()
 
 gc = Geocoder()
 while(True):
