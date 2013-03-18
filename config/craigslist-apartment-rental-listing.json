@@ -1,30 +1,55 @@
 {
-	"url":"http://montreal.en.craigslist.ca/apa/",
-	"base_url":"http://montreal.en.craigslist.ca/apa/",
-	"page_limit":"10",
-	"fields":[{
-		"name":"posting_url",
-	 	"type":"multiple",
-	 	"directives":[{
-	 		"tag":"p",
-	 		"attrs":{"class":"row"}
- 		},{
-	 		"tag":"a"
-	 	},{
-	 		"value":"href"
-	 	}]
-	},{
-		"name":"next_page_url",
-		"type":"single",
-		"directives":[{
-			"tag":"p", 
-			"attrs":{
-				"class":"nextpage"
-			}
-		},{
-			"tag":"a"
-		},{
-			"value":"href"
-		}]
-	}]
+    "url": "http://montreal.en.craigslist.ca/apa/",
+    "base_url": "http://montreal.en.craigslist.ca/apa/",
+    "page_limit": "75",
+    "http": {
+        "headers": {
+            "Host": "montreal.en.craigslist.ca",
+            "Connection": "keep-alive",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22",
+            "Accept-Encoding": "gzip,deflate,sdch",
+            "Accept-Language": "en-GB,en;q=0.8,en-US;q=0.6,fr-CA;q=0.4,fr;q=0.2",
+            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+        },
+        "cookies": [{
+	    		"name": "cl_def_lang",
+	    		"value": "en",
+	    		"domain": ".craigslist.ca",
+	    		"path": "/"
+			},{
+	            "name": "cl_def_hp",
+	            "value": "montreal",
+	    		"domain": ".craigslist.ca",
+	    		"path": "/"
+           	}]
+    },
+    "fields": [{
+            "name": "posting_url",
+            "type": "multiple",
+            "directives": [{
+                    "tag": "p",
+                    "attrs": {
+                        "class": "row"
+                    }
+                },{
+                    "tag": "a"
+                },{
+                    "value": "href"
+                }]
+        },{
+            "name": "next_page_url",
+            "type": "single",
+            "directives": [{
+	                "tag": "p",
+	                "attrs": {
+	                    "class": "nextpage"
+	                }
+	            },{
+	                "tag": "a"
+	            },{
+	                "value": "href"
+            }]
+        }
+    ]
 }

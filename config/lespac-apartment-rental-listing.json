@@ -1,7 +1,86 @@
-{"url":"http://immo.lespac.com/immobilier-location/achat-vente-location/montreal/r-LPcpZZ0WWgrZZ13WWvilIdZZ3176WWordZZ1WWaffZZ1WWpageZZ0",
- "base_url":"http://immo.lespac.com",
- "page_limit":"5",
- "fields":[
-    {"name":"posting_url", "type":"multiple", "directives" : [{"tag":"div", "attrs":{"class":"inner_ad"}}, {"tag":"h2"}, {"tag":"a", "attrs":{"class":"icn_new_window"}}, {"value":"href"}]},
-    {"name":"next_page_url", "type":"single", "directives" : [{"tag":"div", "attrs":{"class":"nextPage"}}, {"tag":"a"}, {"value":"href"}]}
-]}
+{
+    "url": "http://immo.lespac.com/immobilier-location/achat-vente-location/montreal/r-LPcpZZ0WWgrZZ13WWvilIdZZ3176WWordZZ1WWaffZZ1WWpageZZ0",
+    "base_url": "http://immo.lespac.com",
+    "page_limit": "900",
+    "http": {
+        "headers": {
+            "Host": "immo.lespac.com",
+            "Connection": "keep-alive",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22",
+            "Accept-Encoding": "gzip,deflate,sdch",
+            "Accept-Language": "en-GB,en;q=0.8,en-US;q=0.6,fr-CA;q=0.4,fr;q=0.2",
+            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+        },
+        "cookies": [{
+	    		"name": "pac_lng",
+	    		"value": "fr",
+	    		"domain": ".immo.lespac.com",
+	    		"path": "/"
+	    	},{
+	    		"name": "affiliation",
+	    		"value": "81",
+	    		"domain": ".immo.lespac.com",
+	    		"path": "/"
+	    	},{
+	    		"name": "ville_rech_id",
+	    		"value": "3176",
+	    		"domain": ".immo.lespac.com",
+	    		"path": "/"
+	    	},{
+	    		"name": "ville_rech_text",
+	    		"value": "Montr%C3%A9al",
+	    		"domain": ".immo.lespac.com",
+	    		"path": "/"
+	    	},{
+	    		"name": "num_reg_ori",
+	    		"value": "8",
+	    		"domain": ".immo.lespac.com",
+	    		"path": "/"
+           	}]
+    },
+    "fields": [
+        {
+            "name": "posting_url",
+            "type": "multiple",
+            "directives": [
+                {
+                    "tag": "div",
+                    "attrs": {
+                        "class": "inner_ad"
+                    }
+                },
+                {
+                    "tag": "h2"
+                },
+                {
+                    "tag": "a",
+                    "attrs": {
+                        "class": "icn_new_window"
+                    }
+                },
+                {
+                    "value": "href"
+                }
+            ]
+        },
+        {
+            "name": "next_page_url",
+            "type": "single",
+            "directives": [
+                {
+                    "tag": "div",
+                    "attrs": {
+                        "class": "nextPage"
+                    }
+                },
+                {
+                    "tag": "a"
+                },
+                {
+                    "value": "href"
+                }
+            ]
+        }
+    ]
+}

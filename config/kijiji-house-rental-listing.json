@@ -1,6 +1,61 @@
-{"url":"http://montreal.kijiji.ca/f-real-estate-house-rental-W0QQAdTypeZ2QQCatIdZ43",
- "page_limit":"25",
- "fields":[
-    {"name":"posting_url", "type":"multiple", "directives" : [{"tag":"a", "attrs":{"class":"adLinkSB"}}, {"value":"href"}]},
-    {"name":"next_page_url", "type":"multiple", "directives" : [{"tag":"a", "attrs":{"class":"prevNextLink"}}, {"value":"href"}, {"result":"1"}]}
-]}
+{
+    "url": "http://montreal.kijiji.ca/f-real-estate-house-rental-W0QQAdTypeZ2QQCatIdZ43",
+    "page_limit": "900",
+    "http": {
+        "headers": {
+            "Host": "montreal.kijiji.ca",
+            "Connection": "keep-alive",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.22 (KHTML, like Gecko) Chrome/25.0.1364.172 Safari/537.22",
+            "Accept-Encoding": "gzip,deflate,sdch",
+            "Accept-Language": "en-GB,en;q=0.8,en-US;q=0.6,fr-CA;q=0.4,fr;q=0.2",
+            "Accept-Charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+        },
+        "cookies": [{
+	    		"name": "area_preference",
+	    		"value": "Vlanguage=en",
+	    		"domain": ".kijiji.ca",
+	    		"path": "/"
+			},{
+	            "name": "cls-last-visit",
+	            "value": "1363573318704",
+	    		"domain": "montreal.kijiji.ca",
+	    		"path": "/"
+           	}]
+    },
+    "fields": [
+        {
+            "name": "posting_url",
+            "type": "multiple",
+            "directives": [
+                {
+                    "tag": "a",
+                    "attrs": {
+                        "class": "adLinkSB"
+                    }
+                },
+                {
+                    "value": "href"
+                }
+            ]
+        },
+        {
+            "name": "next_page_url",
+            "type": "multiple",
+            "directives": [
+                {
+                    "tag": "a",
+                    "attrs": {
+                        "class": "prevNextLink"
+                    }
+                },
+                {
+                    "value": "href"
+                },
+                {
+                    "result": "1"
+                }
+            ]
+        }
+    ]
+}
